@@ -77,13 +77,13 @@ class TestDynamicArray(unittest.TestCase):
     # Guiding internal data storage, with a static array
     # """
 
-    # def test_data_property(self):
-    #     """
-    #     Has an internal `data` property that is a numpy ndarray.
-    #     """
-    #     import numpy as np # Hint: Get an error? Just `pip3 install numpy`
-    #     a = DynamicArray()
-    #     self.assertEqual(np.ndarray, type(a.data))
+    def test_data_property(self):
+        """
+        Has an internal `data` property that is a numpy ndarray.
+        """
+        import numpy as np # Hint: Get an error? Just `pip3 install numpy`
+        a = DynamicArray()
+        self.assertEqual(np.ndarray, type(a.data))
 
     # def test_data_object_references(self):
     #     """

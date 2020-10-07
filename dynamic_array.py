@@ -7,10 +7,10 @@ class DynamicArray:
     def __init__(self):
         self.capacity = 10
         self.length = 0
-        self.array = np.array([])
+        self.data = np.array([])
     
     def __getitem__(self, index):
-        return self.array[index]
+        return self.data[index]
 
     def is_empty(self):
         if self.length == 0:
@@ -23,7 +23,7 @@ class DynamicArray:
     def append(self, n):
         if self.length < self.capacity:
             self.length += 1
-            self.array = np.concatenate((self.array, [n]))
+            self.data = np.concatenate((self.data, [n]))
             return      
         raise Exception("Array at capacity, cannot append")
         
