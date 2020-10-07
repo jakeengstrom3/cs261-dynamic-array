@@ -6,9 +6,12 @@ class DynamicArray:
     pass
     def __init__(self):
         self.capacity = 10
+        self.length = 0
 
     def is_empty(self):
-        return True
+        if self.length == 0:
+            return True
+        return False
         
 
     
