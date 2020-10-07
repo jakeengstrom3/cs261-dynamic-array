@@ -13,5 +13,6 @@ class DynamicArray:
             return True
         return False
         
-
+    def __len__(self):
+        return self.length
     
