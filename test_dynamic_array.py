@@ -22,19 +22,19 @@ class TestDynamicArray(unittest.TestCase):
         except NameError:
             self.fail("Could not instantiate DynamicArray.")
 
-    # def test_default_initial_capacity(self):
-    #     """
-    #     The default initial capacity is ten.
-    #     """
-    #     a = DynamicArray()
-    #     self.assertEqual(10, a.capacity)
+    def test_default_initial_capacity(self):
+        """
+        The default initial capacity is ten.
+        """
+        a = DynamicArray()
+        self.assertEqual(10, a.capacity)
 
-    # def test_initially_empty(self):
-    #     """
-    #     A dynamic array is initially empty.
-    #     """
-    #     a = DynamicArray()
-    #     self.assertTrue(a.is_empty())
+    def test_initially_empty(self): 
+        """
+        A dynamic array is initially empty.
+        """
+        a = DynamicArray()
+        self.assertTrue(a.is_empty())
 
     # def test_initial_length(self):
     #     """
