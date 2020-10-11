@@ -53,7 +53,7 @@ class DynamicArray:
     def delete(self, i):
         if self.is_empty():
             raise IndexError("Array Empty.  Cannot Delete")
-        if i >= len(self):
+        if i >= len(self) or i < 0:
             raise IndexError("Index out of Bounds")
         
         while i < len(self) - 1:
@@ -61,8 +61,24 @@ class DynamicArray:
             i += 1
         
         self.data[i] = None
-
         self.next_index -= 1
+        return self.data[i]
+
+    def insert(self, index, x):
+        #Loop from end.  last is last -1, and so on until at i.  i+1 = i, then i = n
+        if len(self) >= self.capacity:
+            raise IndexError("Array Full.  Cannon insert")
+        if index < 0 or index > self.capacity:
+            raise IndexError("Index out of Bounds")
+
+        i = len(self)
+        while i > index:
+            self.data[i] = self.data[i - 1]
+            i -= 1
+        
+        self.data[i] = x
+        return x
+
 
 
     
