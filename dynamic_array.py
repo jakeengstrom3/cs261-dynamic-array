@@ -24,17 +24,22 @@ class DynamicArray:
         
     
     def __len__(self):
-        i = 0
-        while i < self.data.size:
-            if self.data[i] is None: #Finds the first instance of None, prints the index bc that will be the length
-                return i
-            i += 1
+        return self.next_index
+
+    def increaseCapacity(self):
+
+        self.data = np.concatenate((self.data, np.empty(self.capacity, dtype=object)))
+        self.capacity *= 2
 
     def append(self, n):
-        if self.next_index >= self.capacity:
-            raise IndexError("DynamicArray Full.  Cannot append")
+        
+        if self.is_full():
+            
+            self.increaseCapacity()
+
         self.data[self.next_index] = n
         self.next_index += 1
+        
 
     def clear(self):
         self.data = np.empty(self.capacity, dtype=object)
@@ -66,8 +71,8 @@ class DynamicArray:
 
     def insert(self, index, x):
         #Loop from end.  last is last -1, and so on until at i.  i+1 = i, then i = n
-        if len(self) >= self.capacity:
-            raise IndexError("Array Full.  Cannon insert")
+        if self.is_full():
+            self.increaseCapacity()
         if index < 0 or index > self.capacity:
             raise IndexError("Index out of Bounds")
 
@@ -77,7 +82,74 @@ class DynamicArray:
             i -= 1
         
         self.data[i] = x
+        self.next_index += 1
         return x
+
+    def is_full(self):
+        return self.next_index >= self.capacity 
+
+    def max(self):
+        if self.is_empty():
+            return None
+        i = 1
+        max = self.data[0]
+        while i < len(self):
+            if(max < self.data[i]):
+                max = self.data[i]
+            i += 1
+        return max
+
+    def min(self):
+        if self.is_empty():
+            return None
+        i = 1
+        min = self.data[0]
+        while i < len(self):
+            if(min > self.data[i]):
+                min = self.data[i]
+            i += 1
+        return min
+
+    def sum(self):
+        if self.is_empty():
+            return None
+        i = 0
+        sum = 0
+        while i < len(self):
+            sum += self.data[i]
+            i += 1
+        return sum
+
+    def linear_search(self, target):
+        
+        i = 0
+        
+        while i < len(self):
+            if self.data[i] == target:
+                return i
+            i += 1
+        return None
+
+    def binary_search(self, target):
+        min = 0
+        max = len(self)
+        while min <= max:
+            middleIndex = int((min + max) / 2)
+            middleValue = self.data[middleIndex]
+            if target == middleValue:
+                return middleIndex
+            elif target > middleValue:
+                min = middleIndex + 1
+            else:
+                max = middleIndex -1
+        
+        return None
+
+
+        
+
+
+
 
 
 

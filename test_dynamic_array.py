@@ -410,149 +410,149 @@ class TestDynamicArray(unittest.TestCase):
     # Fullness
     # """
 
-    # def test_empty_not_full(self):
-    #     """
-    #     An empty dynamic array is not full.
-    #     """
-    #     a = DynamicArray()
-    #     self.assertFalse(a.is_full())
+    def test_empty_not_full(self):
+        """
+        An empty dynamic array is not full.
+        """
+        a = DynamicArray()
+        self.assertFalse(a.is_full())
 
-    # def test_less_than_capacity(self):
-    #     """
-    #     A dynamic array with a number of elements less than capacityis not full.
-    #     """
-    #     a = DynamicArray()
-    #     a.append('fee')
-    #     a.append('fi')
-    #     self.assertTrue(len(a) < a.capacity)
-    #     self.assertFalse(a.is_full())
+    def test_less_than_capacity(self):
+        """
+        A dynamic array with a number of elements less than capacityis not full.
+        """
+        a = DynamicArray()
+        a.append('fee')
+        a.append('fi')
+        self.assertTrue(len(a) < a.capacity)
+        self.assertFalse(a.is_full())
 
-    # def test_full(self):
-    #     """
-    #     A dynamic array is full when the number of elements fills its internal data array
-    #     """
-    #     a = DynamicArray()
-    #     for _ in range(0, a.capacity):
-    #         a.append('fake')
-    #     self.assertEqual(10, len(a))
-    #     self.assertEqual(10, a.next_index)
-    #     self.assertEqual(len(a), a.capacity)
-    #     self.assertTrue(a.is_full())
+    def test_full(self):
+        """
+        A dynamic array is full when the number of elements fills its internal data array
+        """
+        a = DynamicArray()
+        for _ in range(0, a.capacity):
+            a.append('fake')
+        self.assertEqual(10, len(a))
+        self.assertEqual(10, a.next_index)
+        self.assertEqual(len(a), a.capacity)
+        self.assertTrue(a.is_full())
 
     # """
     # Increasing capacity
     # """
 
-    # def test_append_to_full(self):
-    #     """
-    #     A full dynamic array expands to accommodate a new appended element.
-    #     """
-    #     a = DynamicArray()
-    #     for _ in range(0, a.capacity):
-    #         a.append('fake')
-    #     a.append('new value')
-    #     self.assertEqual('new value', a[10])
+    def test_append_to_full(self):
+        """
+        A full dynamic array expands to accommodate a new appended element.
+        """
+        a = DynamicArray()
+        for _ in range(0, a.capacity):
+            a.append('fake')
+        a.append('new value')
+        self.assertEqual('new value', a[10])
 
-    # def test_new_capacity(self):
-    #     """
-    #     When expanding, a dynamic array doubles its capacity
-    #     """
-    #     a = DynamicArray()
-    #     for _ in range(0, a.capacity):
-    #         a.append('fake')
-    #     old_capacity = a.capacity
-    #     a.append('new value')
-    #     self.assertEqual(2 * old_capacity, a.capacity)
+    def test_new_capacity(self):
+        """
+        When expanding, a dynamic array doubles its capacity
+        """
+        a = DynamicArray()
+        for _ in range(0, a.capacity):
+            a.append('fake')
+        old_capacity = a.capacity
+        a.append('new value')
+        self.assertEqual(2 * old_capacity, a.capacity)
 
-    # def test_insert_to_full(self):
-    #     """
-    #     A full dynamic array expands to accommodate a new inserted element.
-    #     """
-    #     a = DynamicArray()
-    #     for i in range(0, a.capacity):
-    #         a.append(f"fake{i}")
-    #     a.insert(0, 'new value')
-    #     self.assertEqual('new value', a[0])
-    #     self.assertEqual('fake0', a[1])
-    #     self.assertEqual('fake9', a[10])
+    def test_insert_to_full(self):
+        """
+        A full dynamic array expands to accommodate a new inserted element.
+        """
+        a = DynamicArray()
+        for i in range(0, a.capacity):
+            a.append(f"fake{i}")
+        a.insert(0, 'new value')
+        self.assertEqual('new value', a[0])
+        self.assertEqual('fake0', a[1])
+        self.assertEqual('fake9', a[10])
 
 
     # """
     # Max, min, and sum
     # """
 
-    # def test_max(self):
-    #     """
-    #     Max method returns the largest value in the dynamic array.
-    #     """
-    #     a = DynamicArray()
-    #     for _ in range(0, 9):
-    #         a.append(random.randint(0, 100))
-    #     largest_value = random.randint(101, 150)
-    #     a.insert(random.randint(0, 9), largest_value)
-    #     self.assertEqual(largest_value, a.max())
+    def test_max(self):
+        """
+        Max method returns the largest value in the dynamic array.
+        """
+        a = DynamicArray()
+        for _ in range(0, 9):
+            a.append(random.randint(0, 100))
+        largest_value = random.randint(101, 150)
+        a.insert(random.randint(0, 9), largest_value)
+        self.assertEqual(largest_value, a.max())
 
-    # def test_min(self):
-    #     """
-    #     Min method returns the smallest value in the dynamic array.
-    #     """
-    #     a = DynamicArray()
-    #     for _ in range(0, 9):
-    #         a.append(random.randint(100, 200))
-    #     smallest_value = random.randint(0, 50)
-    #     a.insert(random.randint(0, 9), smallest_value)
-    #     self.assertEqual(smallest_value, a.min())
+    def test_min(self):
+        """
+        Min method returns the smallest value in the dynamic array.
+        """
+        a = DynamicArray()
+        for _ in range(0, 9):
+            a.append(random.randint(100, 200))
+        smallest_value = random.randint(0, 50)
+        a.insert(random.randint(0, 9), smallest_value)
+        self.assertEqual(smallest_value, a.min())
 
-    # def test_sum(self):
-    #     """
-    #     Sum method returns the sum of all values in the dynamic array.
-    #     """
-    #     a = DynamicArray()
-    #     for val in range(10, 15):
-    #         a.append(val)
-    #     self.assertEqual(60, a.sum())
+    def test_sum(self):
+        """
+        Sum method returns the sum of all values in the dynamic array.
+        """
+        a = DynamicArray()
+        for val in range(10, 15):
+            a.append(val)
+        self.assertEqual(60, a.sum())
 
-    # def test_max_min_sum_of_empty(self):
-    #     """
-    #     The max, min or sum of an empty dynamic array is None.
-    #     """
-    #     a = DynamicArray()
-    #     self.assertEqual(None, a.sum())
-    #     self.assertEqual(None, a.min())
-    #     self.assertEqual(None, a.max())
+    def test_max_min_sum_of_empty(self):
+        """
+        The max, min or sum of an empty dynamic array is None.
+        """
+        a = DynamicArray()
+        self.assertEqual(None, a.sum())
+        self.assertEqual(None, a.min())
+        self.assertEqual(None, a.max())
 
     # """
     # Search
     # """
 
-    # def test_linear_search(self):
-    #     """
-    #     The linear search method returns the index of the first occurence of a
-    #     value value if it exists in the array, or None if it doesn't.
-    #     """
-    #     a = DynamicArray()
-    #     for i in range(5, 1000005):
-    #         a.append(i)
-    #     self.assertEqual(None, a.linear_search('LOVE'))
-    #     self.assertEqual(0, a.linear_search(5))
-    #     start_time = time.time() # Ignore this line, it's just some instrumentation.
-    #     self.assertEqual(999999, a.linear_search(1000004))
-    #     print(f"\nLinear Search Time: {time.time()-start_time}\n")
-    #     random_index = random.randint(0, len(a))
-    #     a.insert(random_index, 1)
-    #     self.assertEqual(random_index, a.linear_search(1))
+    def test_linear_search(self):
+        """
+        The linear search method returns the index of the first occurence of a
+        value value if it exists in the array, or None if it doesn't.
+        """
+        a = DynamicArray()
+        for i in range(5, 1000005):
+            a.append(i)
+        self.assertEqual(None, a.linear_search('LOVE'))
+        self.assertEqual(0, a.linear_search(5))
+        start_time = time.time() # Ignore this line, it's just some instrumentation.
+        self.assertEqual(999999, a.linear_search(1000004))
+        print(f"\nLinear Search Time: {time.time()-start_time}\n")
+        random_index = random.randint(0, len(a))
+        a.insert(random_index, 1)
+        self.assertEqual(random_index, a.linear_search(1))
 
-    # def test_binary_search(self):
-    #     """
-    #     The binary search method returns the index of the first occurence of a
-    #     value value if it exists in the array, or None if it doesn't.
-    #     """
-    #     a = DynamicArray()
-    #     for i in range(5, 1000005):
-    #         a.append(i)
-    #     start_time = time.time() # Ignore this line, it's just some instrumentation.
-    #     self.assertEqual(999999, a.binary_search(1000004))
-    #     print(f"\nBinary Search Time: {time.time()-start_time}\n")
+    def test_binary_search(self):
+        """
+        The binary search method returns the index of the first occurence of a
+        value value if it exists in the array, or None if it doesn't.
+        """
+        a = DynamicArray()
+        for i in range(5, 1000005):
+            a.append(i)
+        start_time = time.time() # Ignore this line, it's just some instrumentation.
+        self.assertEqual(999999, a.binary_search(1000004))
+        print(f"\nBinary Search Time: {time.time()-start_time}\n")
 
 
 def fake_value():
